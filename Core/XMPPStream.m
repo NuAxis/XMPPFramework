@@ -1506,6 +1506,7 @@ enum XMPPStreamConfig
 		
 		NSXMLElement *iqElement = [NSXMLElement elementWithName:@"iq"];
 		[iqElement addAttributeWithName:@"type" stringValue:@"set"];
+        [iqElement addAttributeWithName:@"id" stringValue:[XMPPStream generateUUID]];
 		[iqElement addChild:queryElement];
 		
 		NSString *outgoingStr = [iqElement compactXMLString];
@@ -2921,6 +2922,7 @@ enum XMPPStreamConfig
 			
 			NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
 			[iq addAttributeWithName:@"type" stringValue:@"set"];
+            [iq addAttributeWithName:@"id" stringValue:[XMPPStream generateUUID]];
 			[iq addChild:bind];
 			
 			NSString *outgoingStr = [iq compactXMLString];
@@ -2941,6 +2943,7 @@ enum XMPPStreamConfig
 			
 			NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
 			[iq addAttributeWithName:@"type" stringValue:@"set"];
+            [iq addAttributeWithName:@"id" stringValue:[XMPPStream generateUUID]];
 			[iq addChild:bind];
 			
 			NSString *outgoingStr = [iq compactXMLString];
@@ -3131,6 +3134,7 @@ enum XMPPStreamConfig
 			
 			NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
 			[iq addAttributeWithName:@"type" stringValue:@"set"];
+            [iq addAttributeWithName:@"id" stringValue:[XMPPStream generateUUID]];
 			[iq addChild:session];
 			
 			NSString *outgoingStr = [iq compactXMLString];
@@ -3236,7 +3240,7 @@ enum XMPPStreamConfig
 		NSXMLElement *bind = [NSXMLElement elementWithName:@"bind" xmlns:@"urn:ietf:params:xml:ns:xmpp-bind"];
 		[bind addChild:resource];
 		
-		XMPPIQ *iq = [XMPPIQ iqWithType:@"set"];
+		XMPPIQ *iq = [XMPPIQ iqWithType:@"set" elementID:[XMPPStream generateUUID]];
 		[iq addChild:bind];
 		
 		NSString *outgoingStr = [iq compactXMLString];
@@ -3257,7 +3261,7 @@ enum XMPPStreamConfig
 		
 		NSXMLElement *bind = [NSXMLElement elementWithName:@"bind" xmlns:@"urn:ietf:params:xml:ns:xmpp-bind"];
 		
-		XMPPIQ *iq = [XMPPIQ iqWithType:@"set"];
+		XMPPIQ *iq = [XMPPIQ iqWithType:@"set" elementID:[XMPPStream generateUUID]];
 		[iq addChild:bind];
 		
 		NSString *outgoingStr = [iq compactXMLString];
@@ -3651,6 +3655,7 @@ enum XMPPStreamConfig
 			
 			NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
 			[iq addAttributeWithName:@"type" stringValue:@"get"];
+            [iq addAttributeWithName:@"id" stringValue:[XMPPStream generateUUID]];
 			[iq addChild:query];
 			
 			NSString *outgoingStr = [iq compactXMLString];

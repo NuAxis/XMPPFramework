@@ -73,7 +73,7 @@
 	[query addChild:[NSXMLElement elementWithName:@"resource" stringValue:resource]];
 	[query addChild:[NSXMLElement elementWithName:@"digest"   stringValue:digest]];
 	
-	XMPPIQ *iq = [XMPPIQ iqWithType:@"set"];
+    XMPPIQ *iq = [XMPPIQ iqWithType:@"set" elementID:[XMPPStream generateUUID]];
 	[iq addChild:query];
 	
 	[xmppStream sendAuthElement:iq];
